@@ -1,6 +1,6 @@
 # Kubeflow Pipelines with Minikube and MLflow Integration
 
-![Kubeflow](https://img.shields.io/badge/Kubeflow-1.8.0-blue)
+![Kubeflow](https://img.shields.io/badge/Kubeflow-1.8.22-blue)
 ![Minikube](https://img.shields.io/badge/Minikube-v1.35-orange)
 ![MLflow](https://img.shields.io/badge/MLflow-2.20.1-red)
 ![Docker](https://img.shields.io/badge/Docker-24.0+-blue)
@@ -35,7 +35,7 @@ A guide to setting up Kubeflow Pipelines with Minikube and MLflow integration fo
    ```bash
    kubectl apply -k "github.com/kubeflow/pipelines/manifests/kustomize/env/platform-agnostic?ref=1.8.0" -n kubeflow
    ```
-3. Verify deployment (allow 5-7 minutes for pods initialization):
+3. Verify deployment (allow 5 minutes for pods initialization):
    ```bash
    kubectl get pods -n kubeflow -w
    ```
@@ -43,8 +43,7 @@ A guide to setting up Kubeflow Pipelines with Minikube and MLflow integration fo
 ### 4. Environment Setup
 1. Install required Python packages:
    ```bash
-   pip install --upgrade pip setuptools wheel
-   pip install mlflow kfp==1.8.22
+   pip install -r requirements.txt
    ```
 ---
 
@@ -88,7 +87,7 @@ Open browser: http://localhost:5000
 - Artifact visualization
 
 ### MLflow Tracking
-Access MLflow UI at http://localhost:5000:
+MLflow UI:
 - View experiment parameters
 - Track metrics (e.g., accuracy=0.95)
 - Analyze artifacts
@@ -104,4 +103,3 @@ minikube service list         # Active services
 
 💡 **Optimization**:
 - Allocate more resources: `minikube start --driver=docker --memory=8192 --cpus=4`
-```
